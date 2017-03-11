@@ -1,0 +1,45 @@
+The Sentential Decision Diagram Package
+sdd version 1.1.1, January 31, 2014
+http://reasoning.cs.ucla.edu/sdd
+
+======================================================================
+sdd version 1.1.1, January 31, 2014
+
+- bug fix (unit clauses not handled correctly in compiler-auto.c)
+
+======================================================================
+sdd version 1.1, November 7, 2013
+
+- introduced Beginner-User and Advanced-User manuals
+
+- introduced automatic garbage collection and automatic SDD
+  minimization
+
+- automatic SDD minimization can be set to invoke a user-specified
+  minimization function
+
+- introduced two versions of CNF/DNF-to-SDD compiler: one with
+  automatic garbage collection and SDD minimization, and one with
+  manual
+
+- added functions to simplify garbage collection (e.g., testing for
+  garbage collected nodes, conditional garbage collection calls, etc.)
+
+- added support for weighted model counting
+
+- added support for navigating SDDs
+
+- added support for adding variables to a manager
+
+- added a library version of the vtree search algorithm (SDD
+  minimization algorithm)
+
+- command line options of the CNF-to-SDD compiler have been updated,
+  with new default options (initial balanced vtree, dynamic vtree
+  search enabled, and automatic garbage collection and SDD
+  minimization)
+
+======================================================================
+sdd version 1.0, July 26, 2013
+
+- initial release

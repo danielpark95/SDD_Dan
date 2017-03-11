@@ -1,0 +1,52 @@
+//len: 8
+
+//S -> AS
+nonRules[0][0] = 2;
+nonRules[0][1] = 0;
+nonRules[0][2] = 2;
+
+//S -> SB
+nonRules[1][0] = 2;
+nonRules[1][1] = 2;
+nonRules[1][2] = 1;
+
+//S -> AB
+nonRules[2][0] = 2;
+nonRules[2][1] = 0;
+nonRules[2][2] = 1;
+
+//A -> a
+termRules[0][0] = 0;
+termRules[0][1] = 0;
+
+//B -> b
+termRules[1][0] = 1;
+termRules[1][1] = 1;
+
+//B -> l
+termRules[2][0] = 1;
+termRules[2][1] = 2;
+
+//A -> m
+termRules[3][0] = 0;
+termRules[3][1] = 3;
+
+termRules[4][0] = 1;
+termRules[4][1] = 4;
+
+termRules[5][0] = 0;
+termRules[5][1] = 5;
+
+termRules[6][0] = 1;
+termRules[6][1] = 6;
+
+termRules[7][0] = 0;
+termRules[7][1] = 7;
+
+2 1932
+3 2058
+4 2146
+5 2316
+6 2402
+7 2572
+8 2658

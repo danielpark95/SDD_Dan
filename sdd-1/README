@@ -1,0 +1,123 @@
+<<<<<<< HEAD
+The Sentential Decision Diagram Package
+sdd version 1.1.1, January 31, 2014
+http://reasoning.cs.ucla.edu/sdd
+
+The SDD Package is a system for constructing, manipulating and
+optimizing Sentential Decision Diagrams (SDDs).
+
+The SDD library is provided as a binary (libsdd.a), and source code is
+provided for CNF-to-SDD compilation, and for dynamic vtree search.
+All source code provided is in the C programming language (and in
+particular, C99).  License terms are provided in the file described
+below.
+
+FILES
+
+  bin/       This directory contains pre-compiled binaries for the 
+             CNF-to-SDD compiler.
+  cnf/       This directory includes some sample .cnf files.
+  doc/       This directory includes the Advanced-User manual and 
+             Beginning-User manual.
+  examples/  This directory includes a selection of example CNFs,
+             which can be compiled using the CNF-to-SDD compiler,
+             using default options.
+  include/   This directory includes header files for the compiler 
+             and for the SDD API.
+  lib/       This directory includes the SDD library.
+  src/       This directory includes the source for the CNF-to-SDD
+             compiler, and for the dynamic vtree search algorithm,
+             which was proposed by Choi & Darwiche in AAAI-13.
+  CHANGELOG  This file contains a log of changes over different 
+             versions of the SDD Package.
+  LICENSE    This file includes the license for the SDD Package.
+  Makefile   This is the Makefile used for compiling the CNF-to-SDD
+             compiler.
+  README     This is this file.
+
+COMPILATION
+
+A simple Makefile is provided for compiling the CNF-to-SDD compiler,
+which can be compiled by simply running the "make" command.
+
+NOTES
+
+The CNF-to-SDD compiler and dynamic vtree search algorithm are both
+based on those reported in the paper:
+
+  "Dynamic Minimization of Sentential Decision Diagrams"
+  by Arthur Choi and Adnan Darwiche
+  In Proceedings of the 27th Conference on Artificial Intelligence, 2013. 
+  http://reasoning.cs.ucla.edu/fetch.php?id=128&type=pdf
+
+The dynamic vtree search algorithm included in this distribution 
+is a more refined version of the one described in the above paper,
+and tends to yield faster but perhaps larger compilations.
+Hence, the results by the current compiler will differ (usually only
+slightly) from those reported in the paper above.
+
+The CNF-to-SDD compiler also supports the compilation of DNF into SDD.
+In particular, compilation from Flat Normal Form (FNF) to SDD is
+supported, which includes CNF and DNF as special cases.
+
+To compile one of the included example CNFs into an SDD, we can use
+one of the pre-compiled binaries, and execute the following on the
+command line:
+
+  bin/sdd-linux -c cnf/s208.1.scan.cnf
+
+To see a list of all command line options, run the command:
+
+  bin/sdd-linux -h
+
+The default settings correspond to using (1) a balanced initial vtree
+(option -t balanced), (2) enabling dynamic vtree search (option -r2),
+and (3) automatic garbage-collection and minimization (manual GC and
+minimization can be enabled using option -M).
+
+AUTHORS
+
+The SDD Package was developed by Arthur Choi and Adnan Darwiche, of
+the Automated Reasoning Group at the University of California, Los
+Angeles.
+
+  http://reasoning.cs.ucla.edu
+
+Feedback, bug reports, and questions can be sent to the email address
+
+  sdd@cs.ucla.edu
+=======
+This project represents context-free grammars as probabilistic logic bases using PSDDs.  It achieves this by representing a CFG canonically as a SDD and using machine learning to generate the PSDD.
+The code to generate an SDD is located in sdd-1.1.1/parse.c.
+  The parameters of the CFG are set at the top of the main function.  Don't worry about tmpNonCt and tmpTermCt, I used them in testing the size and node count of the SDD.
+  The arrays nonRules and termRules hold the rules of the cfg, there are two ways to set them:
+    1) You can input them to the translateRules function in the indicated manner and run translateRules with nonRules and termRules as arguments
+      This function takes in the rules in the same form that generateDataset.c does, so it should probably only be used if you are using generateDataset.c to create your datasets.
+    2) You can create separate arrays for non-terminal rules and terminal rules of the following forms:
+      int utNonRules[6] = {000,111,12,202,221,201}
+        If the non-terminals are 0:A, 1:B, 2:S, these equate to A -> AA, B -> BB, A -> BS (note a leading 0 is left off), S -> AS, etc.
+      int utTermRules[2] = {00,11}
+        If the non-terminals are the same as above and the terminals are 0:a, 1:b, these equate to A -> a, B -> b
+				
+      After setting these arrays, run transBoth(utNonRules,nonRules,nonRuleCount,utTermRules,termRules,termRuleCount) to input the rules to the nonRule and termRule arrays
+			
+  This script saves the sdd and vtree corresponding to the CFG
+	
+There are two shell scripts to run the learning experiments.
+  master.sh runs learning experiments with pcfg generated datasets
+    set the number of datasets that you want to take the average log likelihood over in the "count" parameter of master.sh
+    set the set size of those datasets in the "setSize" parameter of master.sh
+    Input the cfg to parse.c and generateDataset.c
+    Input the rules to inside-outside/rules.txt
+		
+    You are now ready to run master.sh
+		
+		
+  masterPsddGen.sh runs learning experiments with psdd generated datasets
+    set the number of datasets that you want to take the average log likelihood over in the "count" parameter of masterPsddGen.sh
+    set the set size of those datasets in the "setSize" parameter of masterPsddGen.sh
+    Input the cfg to parse.c
+    Input the rules to inside-outside/rules.txt
+		
+You are now ready to run masterPsddGen.sh
+>>>>>>> 86afdb10eaa232cd17fb92138c15efa339b0b4a7

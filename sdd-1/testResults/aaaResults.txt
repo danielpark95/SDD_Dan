@@ -1,0 +1,129 @@
+PCFG Generated, fixed
+	1	S --> A T
+	1	B --> b
+	1	A --> a
+	0.9	T --> A U
+	0.1	T --> B U
+	1	U --> A V
+	0.7	V --> A A
+	0.3	V --> B A
+	
+	set size of 8192, 100 sets
+	PCFG average log likelihood: 0.93209242
+	PSDD average log likelihood: 0.9326793336
+	
+PCFG Generated, variable length
+	set of size 8192, 100 sets
+	PCFG average log likelihood: 5.3400885
+	PSDD average log likelihood: 2.88294021387
+	
+	//A -> a 0.8
+	//A -> AA 0.2
+	//B -> b 0.8
+	//B -> VB 0.1
+	//B -> AV 0.1
+	//S -> AT 0.5
+	//S -> US 0.3
+	//S -> y 0.2
+	//T -> AU 0.6
+	//T -> BU 0.1
+	//T -> b 0.3
+	//U -> AV 0.6
+	//U -> y 0.1
+	//U -> x 0.3
+	//V -> AU 0.4
+	//V -> BA 0.3
+	//V -> y 0.3
+	
+PSDD Generated, variable length
+	set of size 1024, 100 sets
+	length 5
+	same cfg as above but with no weights
+	S --> A T
+	S --> U S
+	S --> y
+	B --> b
+	B --> V B
+	B --> A V
+	A --> a
+	A --> A A
+	T --> A U
+	T --> B U
+	T --> b
+	U --> A V
+	U --> y
+	U --> x
+	V --> A U
+	V --> B A
+	V --> y
+	PCFG average log likelihood: 2.9577318
+	PSDD average log likelihood: 1.17486294315
+	
+PSDD Generated, fixed length
+	same as above
+	length 5
+	PCFG average log likelihood: 0.94982087
+	PSDD average log likelihood: 0.708316066022
+	
+
+
+
+CVsNR10
+	quadratic
+	r^2 0.984
+	coefficients
+		111
+		-23
+		1
+SVsNR10
+	linear
+	r^2 0.824
+	coefficients
+		619
+		47
+		
+CVsTR7
+	quadratic
+	r^2 0.949
+	coefficients
+		1.4475140293275404e+003
+	  -2.7862593314900766e+002
+	   1.2107966327638986e+001
+	
+SVsNT2
+	linear
+	r^2 0.986
+	coefficients
+		2.5565201465201528e+002
+		4.8806471306471273e+001
+		
+CVsNT2
+	they all equal 15
+	
+SVsT1
+	linear
+	r^2 0.941
+	coefficients
+		4.3822466422466425e+002
+		1.8819291819291820e+001
+
+CVsT1
+	they are all the same
+	
+SVsL0
+	cubic
+	r^2 0.999
+	coefficients
+		-1.7862285714288555e+003
+		   1.0378571428572568e+003
+		  -1.7542857142858310e+002
+		   1.3000000000000338e+001
+		
+CVsL0
+	cubic
+	r^2 0.906
+	coefficients
+		-1.6102226006192376e+005
+	   7.8915384743247821e+004
+	  -1.0020243456234337e+004
+	   3.6142218048026854e+002

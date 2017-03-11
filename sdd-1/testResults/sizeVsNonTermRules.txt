@@ -1,0 +1,87 @@
+//S -> AS
+nonRules[0][0] = 2;
+nonRules[0][1] = 0;
+nonRules[0][2] = 2;
+
+//S -> SB
+nonRules[1][0] = 2;
+nonRules[1][1] = 2;
+nonRules[1][2] = 1;
+
+//S -> AB
+nonRules[2][0] = 2;
+nonRules[2][1] = 0;
+nonRules[2][2] = 1;
+
+
+//S -> SC
+nonRules[3][0] = 2;
+nonRules[3][1] = 2;
+nonRules[3][2] = 3;
+
+//S -> SC
+nonRules[4][0] = 2;
+nonRules[4][1] = 2;
+nonRules[4][2] = 4;
+
+//S -> SC
+nonRules[5][0] = 2;
+nonRules[5][1] = 2;
+nonRules[5][2] = 5;
+
+//S -> SC
+nonRules[6][0] = 2;
+nonRules[6][1] = 2;
+nonRules[6][2] = 6;
+
+//S -> SC
+nonRules[7][0] = 2;
+nonRules[7][1] = 2;
+nonRules[7][2] = 7;
+
+//A -> a
+termRules[0][0] = 0;
+termRules[0][1] = 0;
+
+//B -> b
+termRules[1][0] = 1;
+termRules[1][1] = 1;
+
+//B -> b
+termRules[2][0] = 2;
+termRules[2][1] = 1;
+
+//B -> b
+termRules[3][0] = 3;
+termRules[3][1] = 1;
+
+//B -> b
+termRules[4][0] = 4;
+termRules[4][1] = 1;
+
+//B -> b
+termRules[5][0] = 5;
+termRules[5][1] = 1;
+
+//B -> b
+termRules[6][0] = 6;
+termRules[6][1] = 1;
+
+//B -> b
+termRules[7][0] = 7;
+termRules[7][1] = 1;
+
+//B -> b
+termRules[8][0] = 8;
+termRules[8][1] = 1;
+
+//B -> b
+termRules[9][0] = 9;
+termRules[9][1] = 1;
+
+3 1690
+4 1718
+5 1732
+6 1746
+7 1760
+8 1774

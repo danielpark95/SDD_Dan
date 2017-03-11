@@ -1,0 +1,14 @@
+1 Start --> S
+1 S --> NP VP
+1 NP --> DT NN
+1 VP --> V NP
+1 VP --> V NP PP
+1 PP --> P NP
+1 DT --> the
+1 DT --> a
+1 NN --> dog
+1 NN --> cat
+1 NN --> house
+1 V --> likes
+1 V --> chases
+1 P --> in

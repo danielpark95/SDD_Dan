@@ -1,0 +1,48 @@
+S --> NP VP
+NP --> Det N
+NP --> N
+VP --> V NP
+NP --> NP PP
+VP --> V PP
+VP --> V
+PP --> P NP
+
+Det --> a
+Det --> the
+
+N --> dog
+N --> cat
+N --> bone
+N --> man
+N --> ball
+N --> Daniel
+N --> soup
+N --> table
+N --> spoon
+N --> food
+N --> Mary
+N --> John
+N --> I
+N --> hill
+N --> street
+N --> lawn
+N --> house
+N --> school
+
+V --> runs
+V --> eats
+V --> throws
+V --> hikes
+V --> bites
+V --> drinks
+V --> gives
+V --> catches
+V --> rolls
+
+P --> on
+P --> in
+P --> to
+P --> with
+P --> down
+P --> at
+P --> up

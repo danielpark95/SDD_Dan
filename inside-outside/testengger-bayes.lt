@@ -1,0 +1,28 @@
+S --> NP VP
+NP --> Det N
+NP --> N Det
+VP --> V NP
+VP --> NP V
+VP --> V NP NP
+VP --> NP NP V
+0.01 Det --> the
+N --> the
+V --> the
+0.01 Det --> a
+N --> a
+V --> a
+0.01 Det --> dog
+N --> dog
+V --> dog
+0.01 Det --> cat
+N --> cat
+V --> cat
+0.01 Det --> bone
+N --> bone
+V --> bone
+0.01 Det --> bites
+N --> bites
+V --> bites
+0.01 Det --> gives
+N --> gives
+V --> gives

@@ -1,0 +1,5 @@
+(S (NP (N John)) (VP (V throws) (NP (NP (Det the) (N ball)) (PP (P to) (NP (Det the) (N man))))))
+(S (NP (Det the) (N man)) (VP (V eats) (NP (NP (N soup)) (PP (P with) (NP (Det a) (N spoon))))))
+(S (NP (N John)) (VP (V rolls) (PP (P down) (NP (NP (Det the) (N hill)) (PP (P with) (NP (N Mary)))))))
+(S (NP (Det a) (N man)) (VP (V gives) (NP (NP (N food)) (PP (P to) (NP (Det a) (N dog))))))
+(S (NP (N Daniel)) (VP (V eats) (PP (P at) (NP (NP (Det the) (N table)) (PP (P in) (NP (N school)))))))

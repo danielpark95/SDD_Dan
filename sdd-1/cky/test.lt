@@ -1,0 +1,7 @@
+1	S1 --> S
+1	S --> NP VP
+1	NP --> dogs
+1	NP --> cats
+1	VP --> miaow
+1	VP --> bark
+
