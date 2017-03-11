@@ -1,35 +1,13 @@
-This project represents context-free grammars as probabilistic logic bases using PSDDs.  It achieves this by representing a CFG canonically as a SDD and using machine learning to generate the PSDD.
-The code to generate an SDD is located in sdd-1/parse.c.
-  The parameters of the CFG are set at the top of the main function.  Don't worry about tmpNonCt and tmpTermCt, I used them in testing the size and node count of the SDD.
-  The arrays nonRules and termRules hold the rules of the cfg, there are two ways to set them:
-    1) You can input them to the translateRules function in the indicated manner and run translateRules with nonRules and termRules as arguments
-      This function takes in the rules in the same form that generateDataset.c does, so it should probably only be used if you are using generateDataset.c to create your datasets.
-    2) You can create separate arrays for non-terminal rules and terminal rules of the following forms:
-      int utNonRules[6] = {000,111,12,202,221,201}
-        If the non-terminals are 0:A, 1:B, 2:S, these equate to A -> AA, B -> BB, A -> BS (note a leading 0 is left off), S -> AS, etc.
-      int utTermRules[2] = {00,11}
-        If the non-terminals are the same as above and the terminals are 0:a, 1:b, these equate to A -> a, B -> b
-				
-      After setting these arrays, run transBoth(utNonRules,nonRules,nonRuleCount,utTermRules,termRules,termRuleCount) to input the rules to the nonRule and termRule arrays
-			
-  This script saves the sdd and vtree corresponding to the CFG
-	
-There are two shell scripts to run the learning experiments.
-  master.sh runs learning experiments with pcfg generated datasets
-    set the number of datasets that you want to take the average log likelihood over in the "count" parameter of master.sh
-    set the set size of those datasets in the "setSize" parameter of master.sh
-    Input the cfg to parse.c and generateDataset.c
-    Input the rules to inside-outside/rules.txt
-		
-    You are now ready to run master.sh
-		
-		
-  masterPsddGen.sh runs learning experiments with psdd generated datasets
-    set the number of datasets that you want to take the average log likelihood over in the "count" parameter of masterPsddGen.sh
-    set the set size of those datasets in the "setSize" parameter of masterPsddGen.sh
-    Input the cfg to parse.c
-    Input the rules to inside-outside/rules.txt
-		
-You are now ready to run masterPsddGen.sh
+
 # SDD_Dan
-# SDD_Dan
+Inside SDD_Dan/sdd-1, there is a script run.sh that will compile both PCFG and PSDD versions of a simplified English grammar. The production rules (rules.lt), training sentences (training_data.yld), and testing sentences (testing_data.yld) are all in sdd-1/grammar. The code to generate an SDD is in sdd-1/my_parse.c, with the rules being input following Noah's format.
+
+Notes:
+
+1) The parameters were chosen according to the sample grammar used for PCFG. There are 8 nonterminals (S, NP, VP, PP, Det, N, V, P), 36 terminals (a, the, dog, cat, bone, man, ball, Daniel, soup, table, spoon, food, Mary, John, I, hill, street, lawn, house, school, runs, eats, throws, hikes, bites, drinks, gives, catches, rolls, on, in, to, with, down, at, up), 8 nonterminal rules (S -> NP VP, NP -> Det N, NP -> N, VP -> V NP, NP -> NP PP, VP -> V PP, PP -> P NP), and 36 terminal rules (one for each terminal). Once scaled up, there will be hundreds of thousands of terminals. Will this affect the performance of the SDD?
+
+2) We may need to change start and len. The SDD specified the length of the words in Noah's original project (all data were words of length 5 e.g. aaabx), and I wasn't sure if it gave us flexibility in sentence lengths for our English language, so I changed the sample sentences to be of length 7 words. Preferrably, we would like to parse sentences of all lengths. 
+
+3) Since a node in a vtree has only a left child and a right child, I changed one of the production rules from VP -> V NP PP to NP -> NP PP to allow for this structure (combined with rule VP -> V NP, we can use NP -> NP PP to produce this). However, this changes the grammaticality of some sentences, and should be fixed to allow for the original tertiary branching. For example, in S "I threw the ball to her", NP "the ball", and PP "to her" are complements/sisters of the V "threw," and the structure should be: (S (NP (N I)) (VP ((V threw) (NP (Det the) (N ball)) (PP (P to) (NP (N her)))))), where V "threw", NP "the ball", PP "to her" are all daughters of VP, but the new structure results in: (S (NP (N I)) (VP ((V threw) (NP (NP (Det the) (N ball)) (PP (P to) (NP (N her))))))), where only V "threw" and NP "the ball to her" are daughters, and NP "the ball" PP "to her" are daughters of NP "the ball to her" (this isn't actually a Phrase by itself but rather sisters NP "the ball" and PP "to her" put next to each other). This is important in figuring out the part-of-speech of a missing word in the prediction algorithm.
+
+4) Fixed Noah's code in translating CFG Rules in Chomsky Normal Form to an array-based representation (e.g. "nonRules", "termRules"). His code specified to omit the leading 0, but this leads to ambiguous grammar in certain cases and creates a bigger SDD than needed. For example, S -> NP VP is represented as 012, but after ommission, 12 could mean NP -> VP, as well. He seems to have done this to ease computation in transBoth because it wans't an issue in his grammar. As a temporary fix, I represented leading 0 as an 8 instead of ommitting it, but if the size of nonterminal rules increases, this implementation needs to be changed.
