@@ -31,3 +31,4 @@ There are two shell scripts to run the learning experiments.
     Input the rules to inside-outside/rules.txt
 		
 You are now ready to run masterPsddGen.sh
+# SDD_Dan
